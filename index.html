@@ -1143,16 +1143,8 @@
     <nav class="wrap">
       <div class="logo">
         <div class="logo-mark">MD</div>
-        Marek Dev.
+        Mareh Dayanu
       </div>
-      <ul class="nav-links">
-        <li><a href="#home" class="active">Beranda</a></li>
-        <li><a href="#about">Tentang</a></li>
-        <li><a href="#skills">Keahlian</a></li>
-        <li><a href="#projects">Proyek</a></li>
-        <li><a href="#contact">Kontak</a></li>
-      </ul>
-      <a href="#" class="nav-cta">Unduh CV ↓</a>
     </nav>
   </header>
 
@@ -1434,7 +1426,7 @@
       var W, H, dpr;
       var particles = [];
       var packets = [];
-      var mouse = {x: -9999, y: -9999, active: false};
+      var mouse = { x: -9999, y: -9999, active: false };
       var t = 0;
 
       var COLORS = ['212,175,55', '242,212,114', '184,134,11'];
@@ -1481,10 +1473,10 @@
             var b = particles[i];
             if (b === a) continue;
             var d = Math.hypot(a.x - b.x, a.y - b.y);
-            if (d < 150 && d < bestD) {bestD = d; best = b;}
+            if (d < 150 && d < bestD) { bestD = d; best = b; }
           }
           if (best) {
-            packets.push({a: a, b: best, p: 0, c: COLORS[Math.floor(Math.random() * COLORS.length)]});
+            packets.push({ a: a, b: best, p: 0, c: COLORS[Math.floor(Math.random() * COLORS.length)] });
           }
         }
       }
@@ -1543,7 +1535,7 @@
         for (var k = packets.length - 1; k >= 0; k--) {
           var pk = packets[k];
           pk.p += 0.02;
-          if (pk.p >= 1) {packets.splice(k, 1); continue;}
+          if (pk.p >= 1) { packets.splice(k, 1); continue; }
           var px = pk.a.x + (pk.b.x - pk.a.x) * pk.p;
           var py = pk.a.y + (pk.b.y - pk.a.y) * pk.p;
           ctx.beginPath();
@@ -1587,7 +1579,7 @@
           ctx.shadowBlur = 0;
         }
 
-        if (!reduceMotion) {requestAnimationFrame(stepParticles);}
+        if (!reduceMotion) { requestAnimationFrame(stepParticles); }
       }
 
       /* ---- faint digital rain layer ---- */
@@ -1599,7 +1591,7 @@
         var cols = Math.floor(W / fontSize);
         rainCols = [];
         for (var i = 0; i < cols; i++) {
-          rainCols.push({x: i * fontSize, y: Math.random() * -H, speed: Math.random() * 1.2 + 0.4});
+          rainCols.push({ x: i * fontSize, y: Math.random() * -H, speed: Math.random() * 1.2 + 0.4 });
         }
       }
 
@@ -1612,21 +1604,21 @@
           rctx.fillStyle = 'rgba(212,175,55,0.35)';
           rctx.fillText(ch, col.x, col.y);
           col.y += col.speed * 6;
-          if (col.y > H + 20) {col.y = Math.random() * -200;}
+          if (col.y > H + 20) { col.y = Math.random() * -200; }
         }
-        if (!reduceMotion) {requestAnimationFrame(stepRain);}
+        if (!reduceMotion) { requestAnimationFrame(stepRain); }
       }
 
       window.addEventListener('resize', resize);
       window.addEventListener('mousemove', function (e) {
         mouse.x = e.clientX; mouse.y = e.clientY; mouse.active = true;
       });
-      window.addEventListener('mouseleave', function () {mouse.active = false;});
+      window.addEventListener('mouseleave', function () { mouse.active = false; });
       window.addEventListener('touchmove', function (e) {
         if (e.touches && e.touches[0]) {
           mouse.x = e.touches[0].clientX; mouse.y = e.touches[0].clientY; mouse.active = true;
         }
-      }, {passive: true});
+      }, { passive: true });
 
       resize();
       if (reduceMotion) {
@@ -1640,7 +1632,7 @@
     (function () {
       var els = document.querySelectorAll('.reveal, .reveal-stagger');
       if (!('IntersectionObserver' in window)) {
-        els.forEach(function (el) {el.classList.add('in');});
+        els.forEach(function (el) { el.classList.add('in'); });
         return;
       }
       var io = new IntersectionObserver(function (entries) {
@@ -1650,8 +1642,8 @@
             io.unobserve(entry.target);
           }
         });
-      }, {threshold: 0.15, rootMargin: '0px 0px -60px 0px'});
-      els.forEach(function (el) {io.observe(el);});
+      }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+      els.forEach(function (el) { io.observe(el); });
     })();
   </script>
 </body>
